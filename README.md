@@ -1,4 +1,4 @@
-# clg
+# College ManageMent System
 
 ## Project setup
 ```
