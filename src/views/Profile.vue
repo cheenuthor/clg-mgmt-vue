@@ -1,10 +1,20 @@
 <template>
-  <h1>this sis profile</h1>
+  <h1>this is profile</h1>
+  <div></div>
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return {
+
+    }
+  }
+};
 </script>
 
-<style>
+<style scoped>
+div {
+  display: grid;
+}
 </style>

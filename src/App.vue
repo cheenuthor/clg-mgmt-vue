@@ -1,10 +1,6 @@
 <template>
   <div id="body">
     <the-navbar />
-    <!-- <div id="nav" class="bg-blue-400 flex justify-between">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
     <router-view />
     <the-footer></the-footer>
   </div>
@@ -23,13 +19,17 @@ export default {
 };
 </script>
 
-<style  src="./assets/tailwind.css">
+<style   lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  the-footer {
+    position: relative;
+    top: 0;
+  }
 }
 #nav {
   padding: 3rem;

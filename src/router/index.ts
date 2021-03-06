@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 import Profile from "../views/Profile.vue";
-
+import NotFound from "../components/NotFound.vue"
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/chats",
     name: "Chats",
-    component: () => import("../views/Chats.vue"),
+    component: () => import("../views/Chat.vue"),
   },
   {
     path: "/about",
@@ -24,9 +24,9 @@ const routes: Array<RouteRecordRaw> = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    component: () => import("../views/About.vue"),
   },
+  { name: "unknown", path: "/:notFound(.*)", component: NotFound },
 ];
 
 const router = createRouter({

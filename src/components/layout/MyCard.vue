@@ -37,18 +37,20 @@ div {
   align-items: center;
   justify-content: center;
   opacity: 95%;
+  transition: scale 0.3s ease-out;
   &:hover {
+    background-color: #e66444;
     scale: 1.1;
+
     opacity: 100%;
     box-shadow: 0 8px 8px 0 hsla(197, 37%, 24%, 0.158);
-    transition: scale 0.3s ease-out;
     cursor: pointer;
   }
   h1 {
     display: inline-block;
     color: #fff;
     font-size: 1rem;
-    font-family: sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
 }
 @media (min-width: 360px) {

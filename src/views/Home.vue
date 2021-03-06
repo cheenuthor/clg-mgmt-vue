@@ -1,8 +1,7 @@
 <template>
   <welcome-msg></welcome-msg>
-
   <div class="home">
-    <my-card title="Chat"></my-card>
+    <my-card title="Chat" @click="navigateRoute('chats')"></my-card>
     <my-card title="Annoncement"></my-card>
     <my-card title="Events"></my-card>
     <my-card title="Club Activities"></my-card>
@@ -11,20 +10,21 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-// @ is an alias to /src
-
+<script >
 import MyCard from "../components/layout/MyCard.vue";
 import WelcomeMsg from "../components/WelcomeMsg.vue";
 
-@Options({
+export default {
   components: {
     MyCard,
     WelcomeMsg,
   },
-})
-export default class Home extends Vue {}
+  methods: {
+    navigateRoute(routeName) {
+      this.$router.push("/" + routeName);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
