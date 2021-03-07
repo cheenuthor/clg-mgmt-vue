@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Chats / TeacherName</h2>
+    <h2>Chats / {{ staffId }}</h2>
     <ul>
       <li
         v-for="chat in chats"
@@ -27,9 +27,15 @@ interface Message {
   date: string;
 }
 export default defineComponent({
+  props: {
+    staffId: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
-      senderId: "12345",
+      id: this.staffId as string,
       isEmpy: false,
       message: "" as string,
       chats: [
@@ -41,7 +47,11 @@ export default defineComponent({
       ],
     };
   },
-  directives: {},
+  // computed: {
+  //   chat() {
+  //     return this.chats.find((chat: { senderId: string; }) => chat.senderId === this.id);
+  //   },
+  // },
   methods: {
     enter(event: { keyCode: number }) {
       if (event.keyCode === 13) {
@@ -56,7 +66,7 @@ export default defineComponent({
         this.chats.push({
           text: this.message,
           date: "12.02.2090",
-          senderId: this.senderId,
+          senderId: this.id,
         });
         this.message = "";
       }

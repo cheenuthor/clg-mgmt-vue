@@ -1,8 +1,9 @@
 <template>
   <ul>
     <staff-list
-    class="staffList"
+      class="staffList"
       v-for="staff in staffs"
+      
       :key="staff"
       :name="staff.name"
       :id="staff.id"
@@ -27,7 +28,7 @@ export default defineComponent({
     return {
       staffs: [
         { name: "trisha", id: "123456", img: "../" } as Staffs,
-        { name: "trisha", id: "123456", img: "../" } as Staffs,
+        { name: "samantha", id: "654321", img: "../" } as Staffs,
       ],
     };
   },
@@ -41,12 +42,27 @@ ul {
   border-radius: 0.5rem;
   background-color: #f4a261;
 }
-
+@media (min-width: 280px) {
+  ul {
+    width: 20rem;
+  }
+}
 @media (min-width: 360px) {
+  ul {
+    margin: 1rem auto;
+    padding: 0.3rem;
+    width: 25rem;
+  }
 }
 @media (min-width: 640px) {
+  ul {
+    width: 30rem;
+  }
 }
 @media (min-width: 768px) {
+  ul {
+    width: 35rem;
+  }
 }
 @media (min-width: 1050px) {
   ul {

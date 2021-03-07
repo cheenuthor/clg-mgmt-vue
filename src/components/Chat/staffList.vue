@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <img
@@ -8,12 +7,15 @@
       alt=""
     />
     <h2>{{ name }}</h2>
+
     <svg
       width="102"
       height="87"
       viewBox="0 0 102 87"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      @click="navigateToStaff"
+      :staffId="id"
     >
       <path
         d="M0.631169 86.625L101.208 43.5L0.631169 0.375L0.583252 33.9167L72.4582 43.5L0.583252 53.0833L0.631169 86.625Z"
@@ -39,6 +41,19 @@ export default {
       required: true,
     },
   },
+  computed: {
+    staffLink() {
+      return {
+        name: "staffName",
+        params: { staffId: this.id },
+      };
+    },
+  },
+  methods: {
+    navigateToStaff() {
+      this.$router.push("/chats/" + this.id);
+    },
+  },
 };
 </script>
 
@@ -46,7 +61,7 @@ export default {
 div {
   background-color: #e76f51;
   display: flex;
-  padding: 1rem;
+  padding: 0.7rem;
   border-radius: 0.5rem;
   margin: 1rem;
   vertical-align: center;
@@ -58,11 +73,9 @@ h2 {
 }
 svg {
   width: 2rem;
-//   align-self: flex-end;
 }
 img {
   border-radius: 50%;
   width: 5rem;
-
 }
 </style>

@@ -1,7 +1,8 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 import Profile from "../views/Profile.vue";
-import NotFound from "../components/NotFound.vue"
+import NotFound from "../components/NotFound.vue";
+import Chats from "../views/Chats.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -14,9 +15,17 @@ const routes: Array<RouteRecordRaw> = [
     component: Profile,
   },
   {
+    name: "Chat",
     path: "/chats",
-    name: "Chats",
     component: () => import("../views/Chat.vue"),
+  
+  },
+  {
+    name: "staffName",
+    path: "/chats/:staffId",
+    component: Chats,
+    props: true,
+
   },
   {
     path: "/about",
@@ -30,7 +39,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 
