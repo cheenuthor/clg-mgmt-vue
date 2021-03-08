@@ -1,14 +1,14 @@
 <template>
-  <div id="body">
-    <the-navbar />
-    <router-view v-slot="{ Component }">
-      <transition>
-        <component :is="Component" />
-      </transition>
-    </router-view>
-    <the-footer class="footer"></the-footer>
-    <login></login>
-  </div>
+  <!-- <div id="body"> -->
+  <the-navbar />
+  <router-view v-slot="slotProps">
+    <transition name="route" mode="out-in">
+      <component :is="slotProps.Component"></component>
+    </transition>
+  </router-view>
+  <the-footer />
+  <!-- <login></login> -->
+  <!-- </div> -->
 </template>
 
 <script lang="ts">
@@ -41,7 +41,6 @@ export default {
 #nav {
   padding: 3rem;
 }
-
 .route-enter-from {
   opacity: 0;
   transform: translateY(-4rem);

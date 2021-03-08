@@ -1,30 +1,33 @@
 <template>
-  <welcome-msg></welcome-msg>
-  <div class="home">
-    <my-card title="Chat" @click="navigateRoute('chats')"></my-card>
-    <my-card title="Annoncement"></my-card>
-    <my-card title="Events"></my-card>
-    <my-card title="Club Activities"></my-card>
-    <my-card title="Study Material"></my-card>
-    <my-card title="Projects"></my-card>
+  <div>
+    <welcome-msg></welcome-msg>
+    <div class="home">
+      <my-card title="Chat" @click="navigateRoute('chats')"></my-card>
+      <my-card title="Annoncement"></my-card>
+      <my-card title="Events"></my-card>
+      <my-card title="Club Activities"></my-card>
+      <my-card title="Study Material"></my-card>
+      <my-card title="Projects"></my-card>
+    </div>
   </div>
 </template>
 
-<script >
+<script lang="ts">
+import { defineComponent } from "vue";
 import MyCard from "../components/layout/MyCard.vue";
 import WelcomeMsg from "../components/WelcomeMsg.vue";
 
-export default {
+export default defineComponent({
   components: {
     MyCard,
     WelcomeMsg,
   },
   methods: {
-    navigateRoute(routeName) {
+    navigateRoute(routeName: string) {
       this.$router.push("/" + routeName);
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
