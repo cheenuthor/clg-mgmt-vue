@@ -1,8 +1,13 @@
 <template>
   <div id="body">
     <the-navbar />
-    <router-view />
-    <the-footer></the-footer>
+    <router-view v-slot="{ Component }">
+      <transition>
+        <component :is="Component" />
+      </transition>
+    </router-view>
+    <the-footer class="footer"></the-footer>
+    <login></login>
   </div>
 </template>
 
@@ -10,11 +15,13 @@
 import TheFooter from "./components/layout/TheFooter.vue";
 import TheNavbar from "./components/layout/TheNavbar.vue";
 import WelcomeMsg from "./components/WelcomeMsg.vue";
+import Login from "./views/Login.vue";
 export default {
   components: {
     TheNavbar,
     TheFooter,
     WelcomeMsg,
+    Login,
   },
 };
 </script>
@@ -33,5 +40,25 @@ export default {
 }
 #nav {
   padding: 3rem;
+}
+
+.route-enter-from {
+  opacity: 0;
+  transform: translateY(-4rem);
+}
+.route-leave-to {
+  opacity: 0;
+  transform: translateY(4rem);
+}
+.route-enter-active {
+  transition: all 0.3s ease-out;
+}
+.route-leave-active {
+  transition: all 0.3s ease-in;
+}
+.route-enter-to,
+.route-leave-from {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>

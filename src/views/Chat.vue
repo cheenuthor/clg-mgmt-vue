@@ -1,9 +1,8 @@
 <template>
   <ul>
     <staff-list
-      class="staffList"
-      v-for="staff in staffs"
-      
+    class="stafflist"
+      v-for="staff in getStaffs"
       :key="staff"
       :name="staff.name"
       :id="staff.id"
@@ -13,25 +12,15 @@
 </template>
 
 <script lang="ts">
+import { mapGetters } from "vuex";
 import { defineComponent } from "vue";
 import StaffList from "../components/Chat/staffList.vue";
-interface Staffs {
-  name: string;
-  id: string;
-  img: string;
-}
+
 export default defineComponent({
   components: {
     StaffList,
   },
-  data() {
-    return {
-      staffs: [
-        { name: "trisha", id: "123456", img: "../" } as Staffs,
-        { name: "samantha", id: "654321", img: "../" } as Staffs,
-      ],
-    };
-  },
+  computed: mapGetters(["getStaffs"]),
 });
 </script>
 
@@ -41,6 +30,7 @@ ul {
   padding: 0.7rem;
   border-radius: 0.5rem;
   background-color: #f4a261;
+ 
 }
 @media (min-width: 280px) {
   ul {
@@ -51,7 +41,7 @@ ul {
   ul {
     margin: 1rem auto;
     padding: 0.3rem;
-    width: 25rem;
+    width: 22rem;
   }
 }
 @media (min-width: 640px) {

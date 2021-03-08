@@ -1,20 +1,12 @@
 <template>
-  <center>
-    <div>
-      <h2>Hello {{ name }},Have a good {{ day }}</h2>
-    </div>
-  </center>
+  <div>
+    <h2>Hello {{ getUserName }},Have a good {{ day }}</h2>
+  </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
-  props: {
-    name: {
-      type: String,
-      required: true,
-      default: "Venkat",
-    },
-  },
   created() {
     let day = new Date();
     let weekday = new Array(7);
@@ -32,18 +24,19 @@ export default {
       day: "",
     };
   },
+  computed: mapGetters(["getUserName"]),
 };
 </script>
 
 <style lang="scss" scoped>
 div {
   display: inline-block;
-
   margin: 0.75rem 1rem;
   border-radius: 4px;
   padding: 0.3rem 1rem;
   background-color: #2a9d8f;
   h2 {
+    display: inline-block;
     font-size: 1.5rem;
     color: #fff;
   }
@@ -52,13 +45,32 @@ div {
 @media (min-width: 360px) {
   div {
     margin: 0.75rem 1rem;
-    padding: 0.3rem 1rem;
+    padding: 0.3rem 0.5rem;
     h2 {
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
   }
 }
 
+@media (min-width: 640px) {
+  div {
+    margin: 1rem 1rem;
+    padding: 0.5rem 1rem;
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  div {
+    margin: 1rem 1rem;
+    padding: 0.5rem 1rem;
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}
 @media (min-width: 1050px) {
   div {
     margin: 1rem 1rem;

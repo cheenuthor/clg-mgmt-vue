@@ -1,13 +1,18 @@
 <template>
-  <div>
+  <div id="listTile">
     <img
       srcset="
         https://www.teachers2gohouston.com/res/chinese-teacher-at-blackboard.jpg
       "
       alt=""
     />
-    <h2>{{ name }}</h2>
-
+    <div>
+      <h2>
+        {{ name }}
+      </h2>
+      <a href="#">teacher@gmail.com</a>
+      <span>tags</span>
+    </div>
     <svg
       width="102"
       height="87"
@@ -19,7 +24,7 @@
     >
       <path
         d="M0.631169 86.625L101.208 43.5L0.631169 0.375L0.583252 33.9167L72.4582 43.5L0.583252 53.0833L0.631169 86.625Z"
-        fill="#E7D5A8"
+        fill="#eee"
       />
     </svg>
   </div>
@@ -41,41 +46,52 @@ export default {
       required: true,
     },
   },
-  computed: {
-    staffLink() {
-      return {
-        name: "staffName",
-        params: { staffId: this.id },
-      };
-    },
-  },
   methods: {
     navigateToStaff() {
-      this.$router.push("/chats/" + this.id);
+      this.$router.push("/chats/" + this.name);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-div {
-  background-color: #e76f51;
+#listTile {
   display: flex;
-  padding: 0.7rem;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: #e76f51;
+  margin: 0.7rem;
   border-radius: 0.5rem;
-  margin: 1rem;
-  vertical-align: center;
-}
-h2 {
-  display: inline-block;
-  color: #fff;
-  flex: 1;
-}
-svg {
-  width: 2rem;
-}
-img {
-  border-radius: 50%;
-  width: 5rem;
+
+  svg {
+    padding-right: 0.5rem;
+    align-self: flex-end;
+    width: 2rem;
+  }
+  img {
+    border-radius: 0.5rem;
+    width: 5rem;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    font-family: "Montserrat", sans-serif;
+    h2 {
+      grid-area: name;
+      display: inline-block;
+      align-self: stretch;
+      color: #ffffff;
+      font-weight: 500;
+    }
+    a {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    span {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
 }
 </style>
