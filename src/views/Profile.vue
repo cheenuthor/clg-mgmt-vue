@@ -90,7 +90,7 @@
         </tr>
         <tr>
           <th>Role</th>
-          <td>{{ profile.role }}</td>
+          <td>{{ profile.role?"Teacher":"Student" }}</td>
         </tr>
         <tr>
           <th>Dept</th>
