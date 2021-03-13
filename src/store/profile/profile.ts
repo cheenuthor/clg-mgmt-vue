@@ -1,8 +1,9 @@
 export default {
-  namespaced: true,
+  namespaced: false,
   state: {
     myProfile: {
       name: "venkata Krishnan",
+      regno: "18cs039",
       phone: 8124352472,
       email: "venkatakrishnanmdu@gmail.com",
       gender: "Male",
@@ -14,13 +15,14 @@ export default {
   mutations: {},
   actions: {},
   getters: {
-    getProfile(state: any) {
-      return state.myProfile;
+    getProfile(state: any): Profile {
+      return state.myProfile as Profile;
     },
   },
 };
 interface Profile {
   name: string;
+  regno: string;
   phone: number;
   email: string;
   gender: string;

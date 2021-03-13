@@ -12,18 +12,20 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from "vue";
 import TheFooter from "./components/layout/TheFooter.vue";
 import TheNavbar from "./components/layout/TheNavbar.vue";
 import WelcomeMsg from "./components/WelcomeMsg.vue";
 import Login from "./views/Login.vue";
-export default {
+
+export default defineComponent({
   components: {
     TheNavbar,
     TheFooter,
     WelcomeMsg,
     Login,
   },
-};
+});
 </script>
 
 <style   lang="scss">

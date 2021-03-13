@@ -78,42 +78,66 @@
       <table>
         <tr>
           <th>Name</th>
-          <td>Venkata Krishnan</td>
+          <td>{{ profile.name }}</td>
         </tr>
         <tr>
           <th>Reg no</th>
-          <td>18cs039</td>
+          <td>{{ profile.regno }}</td>
         </tr>
         <tr>
           <th>Gender</th>
-          <td>Male</td>
+          <td>{{ profile.gender }}</td>
         </tr>
         <tr>
           <th>Role</th>
-          <td>Student</td>
+          <td>{{ profile.role }}</td>
         </tr>
         <tr>
           <th>Dept</th>
-          <td>CSE</td>
+          <td>{{ profile.dept }}</td>
         </tr>
         <tr>
           <th>Year</th>
-          <td>III</td>
+          <td>{{ profile.year }}</td>
         </tr>
         <tr>
           <th>Phone</th>
-          <td>8124352472</td>
+          <td>{{ profile.phone }}</td>
         </tr>
         <tr>
           <th>Email</th>
-          <td>venkatakrishnanmdu@gmail.com</td>
+          <td>{{ profile.email }}</td>
         </tr>
       </table>
     </div>
   </main>
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import StaffList from "../components/Chat/staffList.vue";
+interface Profile {
+  name: string;
+  regno: string;
+  phone: number;
+  email: string;
+  gender: string;
+  dept: string;
+  year: number;
+  role: boolean;
+}
 
+export default defineComponent({
+  components: {
+    StaffList,
+  },
+  computed: {
+    profile(): Profile {
+      return this.$store.getters["getProfile"] as Profile;
+    },
+  },
+});
+</script>
 
 <style scoped lang="scss">
 main {
@@ -156,15 +180,15 @@ div {
   }
 }
 
-@media (min-width: 360px) {
+@media (max-width: 360px) {
   div {
-    width: 20rem;
+    // width: 18rem;
     margin: 0.5rem 1rem;
     svg {
       width: 8rem;
     }
     table {
-      width: 20rem;
+      width: 18rem;
     }
     th,
     td {
@@ -180,6 +204,7 @@ div {
       width: 8rem;
     }
     table {
+      padding: 0.5rem;
       width: 25rem;
     }
     th,

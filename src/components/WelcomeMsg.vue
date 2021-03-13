@@ -4,9 +4,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { mapGetters } from "vuex";
-export default {
+import {defineComponent}from "vue";
+export default defineComponent({
   created() {
     let day = new Date();
     let weekday = new Array(7);
@@ -25,7 +26,7 @@ export default {
     };
   },
   computed: mapGetters(["getUserName"]),
-};
+});
 </script>
 
 <style lang="scss" scoped>

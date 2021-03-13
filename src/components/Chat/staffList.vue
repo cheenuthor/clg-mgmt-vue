@@ -1,3 +1,5 @@
+
+
 <template>
   <div id="listTile">
     <img
@@ -30,8 +32,11 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+//  import Vue from 'vue'
+import { defineComponent } from "vue";
+
+export default defineComponent({
   props: {
     name: {
       type: String,
@@ -51,7 +56,7 @@ export default {
       this.$router.push("/chats/" + this.name);
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
