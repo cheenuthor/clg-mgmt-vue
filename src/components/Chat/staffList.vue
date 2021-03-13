@@ -67,7 +67,7 @@ export default {
   svg {
     padding-right: 0.5rem;
     align-self: flex-end;
-    width: 2rem;
+    width: 2.5rem;
   }
   img {
     border-radius: 0.5rem;

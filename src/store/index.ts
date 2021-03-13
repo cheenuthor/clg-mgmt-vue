@@ -1,75 +1,22 @@
 import { createStore } from "vuex";
+import Chats from "./chat/chats";
+import staffList from "./chat/staffList";
+import profile from "./profile/profile";
 export default createStore({
   modules: {
-    staffList: {
-      namespaced: false,
-      state: {
-        staffs: [
-          { name: "trisha", id: "123456", img: "../" } as Staffs,
-          { name: "samantha", id: "654321", img: "../" } as Staffs,
-          { name: "keerthi suresh", id: "098765", img: "../" } as Staffs,
-        ] as Array<Staffs>,
-      },
-      mutations: {},
-      actions: {},
-      getters: {
-        getStaffs(state) {
-          return state.staffs;
-        },
-      },
-    },
-    chat: {
-      namespaced: false,
-      state: {
-        chats: [
-          {
-            text: "hi",
-            date: "12.02.2090",
-            senderId: "12345678",
-            name: "trisha",
-          } as Message,
-          {
-            text: "hi",
-            date: "12.02.2090",
-            senderId: "venkat",
-            name: "trisha",
-          } as Message,
-          {
-            text: "hi",
-            date: "12.02.2090",
-            senderId: "venkat",
-            name: "trisha",
-          } as Message,
-          {
-            text: "hi",
-            date: "12.02.2090",
-            senderId: "12345678",
-            name: "trisha",
-          } as Message,
-          {
-            text: "hi",
-            date: "12.02.2090",
-            senderId: "venkat",
-            name: "trisha",
-          } as Message,
-        ],
-      },
-      getters: {
-        getChats(state) {
-          return state.chats;
-        },
-      },
-    },
+    staffList,
+    Chats,
+    profile,
   },
   state: {
     islogin: false as boolean,
     name: "venkata krishnan" as string,
     id: "12345678" as string,
     staffs: [
-      { name: "trisha", id: "123456", img: "../" } as Staffs,
-      { name: "samantha", id: "654321", img: "../" } as Staffs,
-      { name: "keerthi suresh", id: "098765", img: "../" } as Staffs,
-    ],
+      { name: "trisha", id: "123456", img: "../" },
+      { name: "samantha", id: "654321", img: "../" },
+      { name: "keerthi suresh", id: "098765", img: "../" },
+    ] as Array<Staffs>,
   },
   mutations: {
     login(state) {
@@ -97,10 +44,4 @@ interface Staffs {
   name: string;
   id: string;
   img: string;
-}
-interface Message {
-  text: string;
-  senderId: string;
-  date: string;
-  name: string;
 }
