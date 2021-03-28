@@ -8,9 +8,17 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+      * {
+        box-sizing: border-box;
+      }
       body {
         background-color: #e9c56a7e;
         font-family: "Montserrat", sans-serif;
+      }
+      #app {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
     </style>
   </head>

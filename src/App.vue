@@ -1,14 +1,12 @@
 <template>
-  <!-- <div id="body"> -->
-  <the-navbar />
-  <router-view v-slot="slotProps">
-    <transition name="route" mode="out-in">
-      <component :is="slotProps.Component"></component>
-    </transition>
-  </router-view>
-  <the-footer />
+    <the-navbar />
+    <router-view v-slot="slotProps">
+      <transition name="route" mode="out-in">
+        <component :is="slotProps.Component"></component>
+      </transition>
+    </router-view>
+    <the-footer />
   <!-- <login></login> -->
-  <!-- </div> -->
 </template>
 
 <script lang="ts">
@@ -29,20 +27,20 @@ export default defineComponent({
 </script>
 
 <style   lang="scss">
+  // teleport{ 
+  //   // display:flex;
+  // }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  the-footer {
-    position: relative;
-    top: 0;
-  }
 }
 #nav {
   padding: 3rem;
 }
+
 .route-enter-from {
   opacity: 0;
   transform: translateY(-4rem);

@@ -82,7 +82,7 @@
         </tr>
         <tr>
           <th>Reg no</th>
-          <td>{{ profile.regno }}</td>
+          <td>{{ profile.reg_no }}</td>
         </tr>
         <tr>
           <th>Gender</th>
@@ -90,11 +90,11 @@
         </tr>
         <tr>
           <th>Role</th>
-          <td>{{ profile.role?"Teacher":"Student" }}</td>
+          <td>{{ profile.isAdmin ? "Teacher" : "Student" }}</td>
         </tr>
         <tr>
           <th>Dept</th>
-          <td>{{ profile.dept }}</td>
+          <td>{{ profile.dept_name }}</td>
         </tr>
         <tr>
           <th>Year</th>
@@ -117,23 +117,33 @@
 import { defineComponent } from "vue";
 import StaffList from "../components/Chat/staffList.vue";
 interface Profile {
+  url: string;
   name: string;
-  regno: string;
-  phone: number;
-  email: string;
+  reg_no: string;
   gender: string;
-  dept: string;
+  isAdmin: Boolean;
+  dept_name: string;
   year: number;
-  role: boolean;
+  email: string;
+  phone: number;
 }
 
 export default defineComponent({
   components: {
     StaffList,
   },
-  computed: {
-    profile(): Profile {
-      return this.$store.getters["getProfile"] as Profile;
+  data() {
+    return {
+      profile: {} as Profile,
+    };
+  },
+  mounted() {
+    this.getprofile();
+  },
+  methods: {
+    getprofile() {
+      this.profile = this.$store.getters.getProfile as Profile;
+      return this.$store.getters.getProfile;
     },
   },
 });
