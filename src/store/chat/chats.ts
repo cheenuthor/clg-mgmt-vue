@@ -1,49 +1,29 @@
+import axios from "axios";
+
 export default {
   namespaced: false,
   state: {
     chats: [
-      {
-        text: "hi",
-        date: "12.02.2090",
-        senderId: "12345678",
-        name: "trisha",
-      } as Message,
-      {
-        text: "hi",
-        date: "12.02.2090",
-        senderId: "venkat",
-        name: "trisha",
-      } as Message,
-      {
-        text: "hi",
-        date: "12.02.2090",
-        senderId: "venkat",
-        name: "trisha",
-      } as Message,
-      {
-        text: "hi",
-        date: "12.02.2090",
-        senderId: "12345678",
-        name: "trisha",
-      } as Message,
-      {
-        text: "hi",
-        date: "12.02.2090",
-        senderId: "venkat",
-        name: "trisha",
-      } as Message,
-    ],
+    ] as Array<Message>,
   },
   getters: {
     getChats(state: any) {
+      axios.get('http://localhost:8000/api/chat/').then((response)=>{
+        for (let i = 0; i < response.data.length; i++) {
+          state.chats[i] = response.data[i]
+        }
+      })
       return state.chats;
     },
+    
   },
 };
 
 interface Message {
-  text: string;
-  senderId: string;
-  date: string;
+  url:string,
   name: string;
+  text: string;
+  date_time: string;
+  is_public:boolean;
+  senderId: string;
 }

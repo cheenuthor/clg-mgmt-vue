@@ -115,7 +115,6 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import StaffList from "../components/Chat/staffList.vue";
 interface Profile {
   url: string;
   name: string;
@@ -129,9 +128,7 @@ interface Profile {
 }
 
 export default defineComponent({
-  components: {
-    StaffList,
-  },
+ 
   data() {
     return {
       profile: {} as Profile,
@@ -143,6 +140,8 @@ export default defineComponent({
   methods: {
     getprofile() {
       this.profile = this.$store.getters.getProfile as Profile;
+      console.log("Profile",this.profile);
+      
       return this.$store.getters.getProfile;
     },
   },

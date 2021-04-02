@@ -4,7 +4,7 @@ export default {
   namespaced: false,
   state: {
     myProfile: {
-      url: "",
+      id: -1,
       name: "",
       reg_no: "",
       gender: "",
@@ -15,34 +15,34 @@ export default {
       phone: 0,
     } as Profile,
   },
-  // mutations: {},
-  // actions: {
-  //   getProfile_server(state: any) {
-  //     axios.get("http://localhost:8000/api/profile/1/").then((response) => {
-  //       // console.log(response.data.name);
-  //       state.myProfile = response.data as Profile;
-  //       // console.log(state.myProfile.name)
-  //     });
-  //   },
-  // },
   getters: {
-    getProfile(state: any): Profile {
-      axios.get("http://localhost:8000/api/profile/1/").then((response) => {
-        console.log(response.data);
+    getUserName(state:any,getters:any): string {
+      getters.getProfile;
+      return state.myProfile.name;
+    },
+     getProfile(state: any)  {
+      axios.get("http://localhost:8000/api/profile/1/").
+      then((response: { data: Profile }) => {
+        console.log(response);
         state.myProfile.name = response.data.name;
         state.myProfile.reg_no = response.data.reg_no;
         state.myProfile.gender = response.data.gender;
         state.myProfile.dept_name = response.data.dept_name;
         state.myProfile.phone = response.data.phone;
         state.myProfile.email = response.data.email;
-        // console.log(state.myProfile.name)
-      });
+        state.myProfile.id = response.data.id;
+        state.myProfile.isAdmin = response.data.isAdmin;
+      })
       return state.myProfile as Profile;
     },
+     getUserId (state:any,getters:any):number {
+       getters.getProfile;
+      return state.myProfile.id
+    }
   },
 };
 interface Profile {
-  url: string;
+  id: number;
   name: string;
   reg_no: string;
   gender: string;

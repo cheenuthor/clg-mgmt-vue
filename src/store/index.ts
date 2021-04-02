@@ -1,17 +1,15 @@
 import { createStore } from "vuex";
 import Chats from "./chat/chats";
-import staffList from "./chat/staffList";
 import profile from "./profile/profile";
 export default createStore({
   modules: {
-    staffList,
+    
     Chats,
     profile,
   },
   state: {
     islogin: false as boolean,
-    name: "venkata krishnan" as string,
-    id: "12345678" as string,
+    id: "http://localhost:8000/api/profile/1/" as string,
     staffs: [
       { name: "trisha", id: "123456", img: "../" },
       { name: "samantha", id: "654321", img: "../" },
@@ -28,15 +26,12 @@ export default createStore({
   },
   actions: {},
   getters: {
-    getUserName(state): string {
-      return state.name;
-    },
     isLoggedIn(state): boolean {
       return state.islogin;
     },
-    getUserId(state): string {
-      return state.id;
-    },
+    // getUserId(state): string {
+    //   return state.id;
+    // },
   },
 });
 

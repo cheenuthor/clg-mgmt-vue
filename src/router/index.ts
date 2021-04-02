@@ -3,7 +3,13 @@ import Home from "../views/Home.vue";
 import Profile from "../views/Profile.vue";
 import NotFound from "../components/NotFound.vue";
 import Chats from "../views/Chats.vue";
+import Login from '../views/Login.vue';
 const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+  },
   {
     path: "/",
     name: "Home",
@@ -17,20 +23,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: "Chat",
     path: "/chats",
-    component: () => import("../views/Chat.vue"),
-  },
-  {
-    name: "staffName",
-    path: "/chats/:staffId",
     component: Chats,
     props: true,
   },
   {
     path: "/about",
     name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import("../views/About.vue"),
   },
   { name: "unknown", path: "/:notFound(.*)", component: NotFound },
